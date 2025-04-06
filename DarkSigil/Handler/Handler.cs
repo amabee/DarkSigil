@@ -1,6 +1,12 @@
 ﻿using DarkSigil.Interface;
 using DarkSigil.Modules;
+using DarkSigil.Modules.Cal;
+using DarkSigil.Modules.Cat;
+using DarkSigil.Modules.ChangeDirectory;
 using DarkSigil.Modules.Help;
+using DarkSigil.Modules.LS;
+using DarkSigil.Modules.Pwd;
+using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
 using System;
 using System.Collections.Generic;
@@ -27,7 +33,13 @@ namespace DarkSigil.Handler
                 { "help" , new Help()},
                 { "about", new About()},
                 {"whois", new WhoIs()},
-              
+                {"whoami" , new WhoAmI()},
+                { "pwd" , new PWD()},
+                { "cal", new cal() },
+                { "cd", new ChangeDirectory()},
+                { "ls", new LS()},
+                { "cat", new CAT()}
+
                
             };
         }

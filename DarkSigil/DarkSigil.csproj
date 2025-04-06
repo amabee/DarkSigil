@@ -47,9 +47,15 @@
     <Compile Include="Interface\ICommands.cs" />
     <Compile Include="Misc\CommandTable.cs" />
     <Compile Include="Modules\About\About.cs" />
+    <Compile Include="Modules\Cal\cal.cs" />
+    <Compile Include="Modules\Cat\Cat.cs" />
+    <Compile Include="Modules\ChangeDirectory\ChangeDirectory.cs" />
     <Compile Include="Modules\ClearTerminal\ClearTerminal.cs" />
     <Compile Include="Modules\Exit\Exit.cs" />
     <Compile Include="Modules\Help\Help.cs" />
+    <Compile Include="Modules\LS\LS.cs" />
+    <Compile Include="Modules\Pwd\PWD.cs" />
+    <Compile Include="Modules\WhoAmI\WhoAmI.cs" />
     <Compile Include="Modules\WhoIs\WhoIs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
