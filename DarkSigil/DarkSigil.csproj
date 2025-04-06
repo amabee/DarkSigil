@@ -43,14 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\Handler.cs" />
+    <Compile Include="Interface\ICommands.cs" />
+    <Compile Include="Misc\CommandTable.cs" />
+    <Compile Include="Modules\About\About.cs" />
+    <Compile Include="Modules\ClearTerminal\ClearTerminal.cs" />
+    <Compile Include="Modules\Exit\Exit.cs" />
+    <Compile Include="Modules\Help\Help.cs" />
+    <Compile Include="Modules\WhoIs\WhoIs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

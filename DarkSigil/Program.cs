@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarkSigil.Handler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace DarkSigil
     {
         static void Main(string[] args)
         {
-            
+            CommandHandler handler = new CommandHandler();
+            handler.Run(); 
         }
     }
 }
