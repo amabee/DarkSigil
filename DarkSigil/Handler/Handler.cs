@@ -4,6 +4,7 @@ using DarkSigil.Modules.Cal;
 using DarkSigil.Modules.Cat;
 using DarkSigil.Modules.ChangeDirectory;
 using DarkSigil.Modules.Help;
+using DarkSigil.Modules.IfConfig;
 using DarkSigil.Modules.LS;
 using DarkSigil.Modules.Pwd;
 using DarkSigil.Modules.WhoAmI;
@@ -38,22 +39,30 @@ namespace DarkSigil.Handler
                 { "cal", new cal() },
                 { "cd", new ChangeDirectory()},
                 { "ls", new LS()},
-                { "cat", new CAT()}
+                { "cat", new CAT()},
+                { "ifconfig", new IfConfig()},
+                { "ipconfig", new IfConfig()}
 
-               
+
             };
         }
 
         public void Run()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-
-            Console.WriteLine("██████╗  █████╗ ██████╗ ██╗  ██╗███████╗██╗ ██████╗ ██╗██╗     ");
-            Console.WriteLine("██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██╔════╝██║██╔════╝ ██║██║     ");
-            Console.WriteLine("██║  ██║███████║██████╔╝█████╔╝ ███████╗██║██║  ███╗██║██║     ");
-            Console.WriteLine("██║  ██║██╔══██║██╔══██╗██╔═██╗ ╚════██║██║██║   ██║██║██║     ");
-            Console.WriteLine("██████╔╝██║  ██║██║  ██║██║  ██╗███████║██║╚██████╔╝██║███████╗");
-            Console.WriteLine("╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝╚══════╝\n");
+            Console.WriteLine("██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\n\n");
+            Console.WriteLine("       @@@@@@@@@@@@@@@@@@");
+            Console.WriteLine("     @@@@@@@@@@@@@@@@@@@@@@@               ██████╗  █████╗ ██████╗ ██╗  ██╗███████╗██╗ ██████╗ ██╗██╗     ");
+            Console.WriteLine("   @@@@@@@@@@@@@@@@@@@@@@@@@@@             ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██╔════╝██║██╔════╝ ██║██║     ");
+            Console.WriteLine("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@            ██║  ██║███████║██████╔╝█████╔╝ ███████╗██║██║  ███╗██║██║     ");
+            Console.WriteLine(" @@@@@@@@@@@@@@@/      \\@@@/   @           ██║  ██║██╔══██║██╔══██╗██╔═██╗ ╚════██║██║██║   ██║██║██║     ");
+            Console.WriteLine("@@@@@@@@@@@@@@@@\\      @@  @___@           ██████╔╝██║  ██║██║  ██║██║  ██╗███████║██║╚██████╔╝██║███████╗");
+            Console.WriteLine("@@@@@@@@@@@@@ @@@@@@@@@@  | \\@@@@@         ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝╚══════╝");
+            Console.WriteLine("@@@@@@@@@@@@@ @@@@@@@@@\\__@_/@@@@@");
+            Console.WriteLine(" @@@@@@@@@@@@@@@/,/,/./'/_|.\\'\\,\\");
+            Console.WriteLine("    @@@@@@@@@@@@@|  | | | | | | | |");
+            Console.WriteLine("                 \\_|_|_|_|_|_|_|_| \n\n");
+            Console.WriteLine("██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████");
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("DarkSigil. Type 'help' for the list of commands. \n");

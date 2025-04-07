@@ -31,6 +31,9 @@ namespace DarkSigil.Modules.Help
                 { "whoami", "Show current user"},
                 {"pwd", "Shows the current working directory" },
                 { "cal" , "Shows the calendar"},
+                { "ls", "List the files, directories and subdirectories"},
+                { "cat", "Reads and displayes text files"},
+                { "ifconfig", "Displays the network configuration"}
             };
 
             var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);

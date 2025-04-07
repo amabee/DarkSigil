@@ -30,6 +30,12 @@ namespace DarkSigil.Modules.WhoIs
             string whoIsHost;
             string queryString;
 
+            if (query.EndsWith("?") || query.EndsWith("--help") || query.EndsWith("-h"))
+            {
+                Console.WriteLine("Usage: whois <domain>");
+                return;
+            }
+
             if (isIpAddr(domain))
             {
                 whoIsHost = this.WHOSIS_HOST;

@@ -53,6 +53,7 @@
     <Compile Include="Modules\ClearTerminal\ClearTerminal.cs" />
     <Compile Include="Modules\Exit\Exit.cs" />
     <Compile Include="Modules\Help\Help.cs" />
+    <Compile Include="Modules\IfConfig\IfConfig.cs" />
     <Compile Include="Modules\LS\LS.cs" />
     <Compile Include="Modules\Pwd\PWD.cs" />
     <Compile Include="Modules\WhoAmI\WhoAmI.cs" />
