@@ -8,6 +8,7 @@ using DarkSigil.Modules.IfConfig;
 using DarkSigil.Modules.LS;
 using DarkSigil.Modules.ping;
 using DarkSigil.Modules.Pwd;
+using DarkSigil.Modules.rm;
 using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
 using System;
@@ -44,6 +45,7 @@ namespace DarkSigil.Handler
                 { "ifconfig", new IfConfig()},
                 { "ipconfig", new IfConfig()},
                 {"ping", new PING() },
+                { "rm", new Rm()}
 
             };
         }

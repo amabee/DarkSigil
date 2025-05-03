@@ -35,7 +35,9 @@ namespace DarkSigil.Modules.Help
                 { "cat", "Reads and displayes text files"},
                 { "ifconfig", "Displays the network configuration"},
                 {   "cd", "Changes working directory" },
-                {"ping", "check the internet connection" }
+                {"ping", "check the internet connection" },
+                { "rm", "removes a file or a directory"}
+
             };
 
             var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);
