@@ -29,13 +29,10 @@ namespace DarkSigil.Modules.IfConfig
                     Console.WriteLine($"  MAC Address : {networkInterface.GetPhysicalAddress()}");
 
                     IPInterfaceProperties ipProps = networkInterface.GetIPProperties();
-                    foreach (UnicastIPAddressInformation addr in ipProps.UnicastAddresses)
+                    foreach (var gateway  in ipProps.GatewayAddresses)
                     {
-                        if (addr.Address.AddressFamily == AddressFamily.InterNetwork ||
-                            addr.Address.AddressFamily == AddressFamily.InterNetworkV6)
-                        {
-                            Console.WriteLine($"  IP Address  : {addr.Address}");
-                        }
+
+                        Console.WriteLine($"  IP Address  : {gateway.Address}");
                     }
 
                     Console.WriteLine();

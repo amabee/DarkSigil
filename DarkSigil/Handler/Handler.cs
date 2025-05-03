@@ -6,6 +6,7 @@ using DarkSigil.Modules.ChangeDirectory;
 using DarkSigil.Modules.Help;
 using DarkSigil.Modules.IfConfig;
 using DarkSigil.Modules.LS;
+using DarkSigil.Modules.ping;
 using DarkSigil.Modules.Pwd;
 using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
@@ -41,8 +42,8 @@ namespace DarkSigil.Handler
                 { "ls", new LS()},
                 { "cat", new CAT()},
                 { "ifconfig", new IfConfig()},
-                { "ipconfig", new IfConfig()}
-
+                { "ipconfig", new IfConfig()},
+                {"ping", new PING() },
 
             };
         }

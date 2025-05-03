@@ -33,7 +33,9 @@ namespace DarkSigil.Modules.Help
                 { "cal" , "Shows the calendar"},
                 { "ls", "List the files, directories and subdirectories"},
                 { "cat", "Reads and displayes text files"},
-                { "ifconfig", "Displays the network configuration"}
+                { "ifconfig", "Displays the network configuration"},
+                {   "cd", "Changes working directory" },
+                {"ping", "check the internet connection" }
             };
 
             var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);

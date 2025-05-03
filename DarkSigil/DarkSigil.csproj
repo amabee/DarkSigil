@@ -55,7 +55,11 @@
     <Compile Include="Modules\Help\Help.cs" />
     <Compile Include="Modules\IfConfig\IfConfig.cs" />
     <Compile Include="Modules\LS\LS.cs" />
+    <Compile Include="Modules\ping\ping.cs" />
+    <Compile Include="Modules\ping\PingArgumentParser.cs" />
+    <Compile Include="Modules\ping\PingOptionsModel.cs" />
     <Compile Include="Modules\Pwd\PWD.cs" />
+    <Compile Include="Modules\rm\rm.cs" />
     <Compile Include="Modules\WhoAmI\WhoAmI.cs" />
     <Compile Include="Modules\WhoIs\WhoIs.cs" />
     <Compile Include="Program.cs" />
