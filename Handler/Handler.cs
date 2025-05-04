@@ -11,12 +11,9 @@ using DarkSigil.Modules.Pwd;
 using DarkSigil.Modules.rm;
 using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using DarkSigil.Utils;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
 
 
 namespace DarkSigil.Handler
@@ -45,7 +42,8 @@ namespace DarkSigil.Handler
                 { "ifconfig", new IfConfig()},
                 { "ipconfig", new IfConfig()},
                 {"ping", new PING() },
-                { "rm", new Rm()}
+                { "rm", new Rm()},
+                {"update", new Updater()}
 
             };
         }

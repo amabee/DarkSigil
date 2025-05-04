@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\DarkSigil\bin\Debug\net9.0\DarkSigil.exe
+C:\Users\User\source\repos\DarkSigil\bin\Debug\net9.0\DarkSigil.deps.json
+C:\Users\User\source\repos\DarkSigil\bin\Debug\net9.0\DarkSigil.runtimeconfig.json
+C:\Users\User\source\repos\DarkSigil\bin\Debug\net9.0\DarkSigil.dll
+C:\Users\User\source\repos\DarkSigil\bin\Debug\net9.0\DarkSigil.pdb
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.AssemblyInfo.cs
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.sourcelink.json
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.dll
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\refint\DarkSigil.dll
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.pdb
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\DarkSigil.genruntimeconfig.cache
+C:\Users\User\source\repos\DarkSigil\obj\Debug\net9.0\ref\DarkSigil.dll

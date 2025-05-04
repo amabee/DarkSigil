@@ -1,26 +1,22 @@
 ﻿using DarkSigil.Interface;
 using DarkSigil.Misc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DarkSigil.Modules.Help
 {
-    public class Help : ICommands
+  public class Help : ICommands
+  {
+    public void Execute(string[] args)
     {
-        public void Execute(string[] args)
-        {
 
-            CommandTable commandTable = new CommandTable();
-            Dictionary<string, string> commands = GetCommands();
-            commandTable.ShowCommandTable(commands);
-        }
+      CommandTable commandTable = new CommandTable();
+      Dictionary<string, string> commands = GetCommands();
+      commandTable.ShowCommandTable(commands);
+    }
 
-        private Dictionary<string, string> GetCommands()
-        {
-            var commands = new Dictionary<string, string>
+    private Dictionary<string, string> GetCommands()
+    {
+      var commands = new Dictionary<string, string>
             {
                 { "clear", "Clears the terminal." },
                 { "cls", "Clears the terminal." },
@@ -36,13 +32,13 @@ namespace DarkSigil.Modules.Help
                 { "ifconfig", "Displays the network configuration"},
                 {   "cd", "Changes working directory" },
                 {"ping", "check the internet connection" },
-                { "rm", "removes a file or a directory"}
-
+                { "rm", "removes a file or a directory"},
+                {"darksigil update", "updates the program to the latest version"}
             };
 
-            var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);
-            return sortedCommands;
-        }
+      var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);
+      return sortedCommands;
     }
-   
+  }
+
 }
