@@ -73,9 +73,14 @@ namespace DarkSigil.Handler
       while (true)
       {
         Console.Write("DarkSigil> ");
-        string input = Console.ReadLine()?.Trim();
+        string? input = Console.ReadLine()?.Trim();
 
         //REGEX 
+        if (string.IsNullOrEmpty(input))
+        {
+          continue;
+        }
+
         string[] parts = Regex.Matches(input, @"[\""].+?[\""]|[^ ]+")
                            .Cast<Match>()
                            .Select(m => m.Value.Replace("\"", ""))
