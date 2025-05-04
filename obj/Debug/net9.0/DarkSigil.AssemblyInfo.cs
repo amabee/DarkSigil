@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DarkSigil")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+711845eddf6063a487764148a2c705c26d5aae50")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0654ce078fdbffc7dc7579fadbcc8ab13b393d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("DarkSigil")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DarkSigil")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
