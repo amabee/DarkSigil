@@ -3,6 +3,7 @@ using DarkSigil.Modules;
 using DarkSigil.Modules.Cal;
 using DarkSigil.Modules.Cat;
 using DarkSigil.Modules.ChangeDirectory;
+using DarkSigil.Modules.Grep;
 using DarkSigil.Modules.Help;
 using DarkSigil.Modules.IfConfig;
 using DarkSigil.Modules.LS;
@@ -46,7 +47,8 @@ namespace DarkSigil.Handler
                 { "rm", new Rm()},
                 {"update", new Updater()},
                 {"mkdir", new Mkdir()},
-
+                {"grep", new Grep()},
+                
             };
     }
 

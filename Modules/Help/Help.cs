@@ -33,7 +33,8 @@ namespace DarkSigil.Modules.Help
                 {   "cd", "Changes working directory" },
                 {"ping", "check the internet connection" },
                 { "rm", "removes a file or a directory"},
-                {"darksigil update", "updates the program to the latest version"}
+                {"darksigil update", "updates the program to the latest version"},
+                {"grep", "Searches for a pattern in a file"},
             };
 
       var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);
