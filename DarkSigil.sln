@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.10.35027.167
+VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSigil", "DarkSigil\DarkSigil.csproj", "{34E844AF-A7C1-469F-9D74-8917A25F1C87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSigil", "DarkSigil.csproj", "{0F0A2C60-12FE-6B16-6B80-8BE54625A6D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34E844AF-A7C1-469F-9D74-8917A25F1C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34E844AF-A7C1-469F-9D74-8917A25F1C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34E844AF-A7C1-469F-9D74-8917A25F1C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34E844AF-A7C1-469F-9D74-8917A25F1C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F0A2C60-12FE-6B16-6B80-8BE54625A6D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0A2C60-12FE-6B16-6B80-8BE54625A6D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0A2C60-12FE-6B16-6B80-8BE54625A6D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0A2C60-12FE-6B16-6B80-8BE54625A6D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {093C7916-6B5F-4E38-AD29-5DC8164CA467}
+		SolutionGuid = {E0A4238C-68BB-40EC-977A-365E7E971BD1}
 	EndGlobalSection
 EndGlobal
