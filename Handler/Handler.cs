@@ -8,9 +8,11 @@ using DarkSigil.Modules.Help;
 using DarkSigil.Modules.IfConfig;
 using DarkSigil.Modules.LS;
 using DarkSigil.Modules.Mkdir;
+using DarkSigil.Modules.Mv;
 using DarkSigil.Modules.ping;
 using DarkSigil.Modules.Pwd;
 using DarkSigil.Modules.rm;
+using DarkSigil.Modules.RmDir;
 using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
 using DarkSigil.Utils;
@@ -48,7 +50,8 @@ namespace DarkSigil.Handler
                 {"update", new Updater()},
                 {"mkdir", new Mkdir()},
                 {"grep", new Grep()},
-                
+                {"rmdir", new RmDir()},
+                {"mv" , new Mv()},
             };
     }
 

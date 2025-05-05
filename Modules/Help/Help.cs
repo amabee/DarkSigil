@@ -30,11 +30,17 @@ namespace DarkSigil.Modules.Help
                 { "ls", "List the files, directories and subdirectories"},
                 { "cat", "Reads and displayes text files"},
                 { "ifconfig", "Displays the network configuration"},
-                {   "cd", "Changes working directory" },
+                { "cd", "Changes working directory" },
                 {"ping", "check the internet connection" },
                 { "rm", "removes a file or a directory"},
                 {"darksigil update", "updates the program to the latest version"},
                 {"grep", "Searches for a pattern in a file"},
+                {"rmdir", "Removes a directory"},
+                {"mkdir", "Creates a directory"},
+                {"mv", "Moves a file or a directory"},
+                // {"cp", "Copies a file or a directory"},
+                // {"touch", "Creates an empty file"},
+                // {"echo", "Displays a message"}
             };
 
       var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);
