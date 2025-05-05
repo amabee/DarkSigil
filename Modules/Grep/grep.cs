@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using DarkSigil.Interface;
 
@@ -14,24 +15,32 @@ namespace DarkSigil.Modules.Grep
       {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Usage: grep [options] <pattern> <file>");
-        Console.WriteLine("Options: -i (ignore case), -n (show line numbers), -v (invert match), -c (count matches), -l (list filenames), -h (suppress filenames), -w (whole word match), -x (whole line match), -r (recursive), -e <exp> (multiple patterns), -f <file> (patterns from file), -E (extended regex), -o (only matched parts), -A <n> (n lines after), -B <n> (n lines before), -C <n> (n lines before and after)");
+        Console.WriteLine("Options: -i (ignore case), -n (show line numbers), -v (invert match), -c (count matches), -l (list filenames), -h (suppress filenames), -w (whole word match), -x (whole line match), -r (recursive), -e (multiple patterns), -f (patterns from file), -E (extended regex), -o (only matched parts), -A (n lines after), -B (n lines before), -C (n lines before and after)");
         Console.ResetColor();
         return;
       }
 
-      // Flag variables
-      bool ignoreCase = false, showLineNumbers = false, invertMatch = false,
-           countOnly = false, listFilenames = false, suppressFilenames = false,
-           wholeWordMatch = false, wholeLineMatch = false, recursiveSearch = false,
-           extendedRegex = false, onlyMatchedParts = false;
-
-      int afterLines = 0, beforeLines = 0, contextLines = 0;
+      bool ignoreCase = false;
+      bool showLineNumbers = false;
+      bool invertMatch = false;
+      bool countOnly = false;
+      bool listFilenames = false;
+      bool suppressFilenames = false;
+      bool wholeWordMatch = false;
+      bool wholeLineMatch = false;
+      bool recursiveSearch = false;
+      bool extendedRegex = false;
+      bool onlyMatchedParts = false;
+      int afterLines = 0;
+      int beforeLines = 0;
+      int contextLines = 0;
       List<string> patterns = new List<string>();
-      List<string> files = new List<string>();
+      string filePath = null;
 
       for (int i = 0; i < args.Length; i++)
       {
-        switch (args[i])
+        var arg = args[i];
+        switch (arg)
         {
           case "-i": ignoreCase = true; break;
           case "-n": showLineNumbers = true; break;
@@ -44,22 +53,38 @@ namespace DarkSigil.Modules.Grep
           case "-r": case "-R": recursiveSearch = true; break;
           case "-E": extendedRegex = true; break;
           case "-o": onlyMatchedParts = true; break;
-          case "-A": if (++i < args.Length && int.TryParse(args[i], out int a)) afterLines = a; break;
-          case "-B": if (++i < args.Length && int.TryParse(args[i], out int b)) beforeLines = b; break;
-          case "-C": if (++i < args.Length && int.TryParse(args[i], out int c)) contextLines = c; break;
-          case "-e": if (++i < args.Length) patterns.Add(args[i]); break;
-          case "-f": if (++i < args.Length) patterns.AddRange(File.ReadAllLines(args[i])); break;
+          case "-A":
+            if (i + 1 < args.Length && int.TryParse(args[i + 1], out int a)) afterLines = a;
+            i++;
+            break;
+          case "-B":
+            if (i + 1 < args.Length && int.TryParse(args[i + 1], out int b)) beforeLines = b;
+            i++;
+            break;
+          case "-C":
+            if (i + 1 < args.Length && int.TryParse(args[i + 1], out int c)) contextLines = c;
+            i++;
+            break;
+          case "-e":
+            if (i + 1 < args.Length) patterns.Add(args[++i]);
+            break;
+          case "-f":
+            if (i + 1 < args.Length) patterns.AddRange(File.ReadAllLines(args[++i]));
+            break;
           default:
-            if (!args[i].StartsWith("-"))
+            if (!arg.StartsWith("-"))
             {
-              if (patterns.Count == 0) patterns.Add(args[i]);
-              else files.Add(args[i]);
+              if (patterns.Count == 0)
+                patterns.Add(arg);
+              else
+                filePath = arg;
             }
             break;
+
         }
       }
 
-      if (patterns.Count == 0 || files.Count == 0)
+      if (patterns.Count == 0 || filePath == null)
       {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Error: Missing pattern or file.");
@@ -67,83 +92,98 @@ namespace DarkSigil.Modules.Grep
         return;
       }
 
-      string patternJoined = string.Join("|", patterns);
-      if (wholeWordMatch) patternJoined = $@"\\b({patternJoined})\\b";
-      if (wholeLineMatch) patternJoined = $"^{patternJoined}$";
-
+      var joinedPattern = string.Join("|", patterns);
+      if (wholeWordMatch) joinedPattern = $"\\b({joinedPattern})\\b";
+      if (wholeLineMatch) joinedPattern = $"^({joinedPattern})$";
       var regexOptions = ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None;
       if (extendedRegex) regexOptions |= RegexOptions.ECMAScript;
-      var regex = new Regex(patternJoined, regexOptions);
+      var regex = new Regex(joinedPattern, regexOptions);
+
+      IEnumerable<string> filesToSearch = recursiveSearch
+        ? Directory.EnumerateFiles(filePath, "*", SearchOption.AllDirectories)
+        : new[] { filePath };
 
       int totalMatches = 0;
 
-      foreach (var file in files)
+      foreach (var file in filesToSearch)
       {
-        IEnumerable<string> filePaths = recursiveSearch
-            ? Directory.EnumerateFiles(file, "*", SearchOption.AllDirectories)
-            : new[] { file };
+        if (!File.Exists(file)) continue;
 
-        foreach (var path in filePaths)
+        var lines = File.ReadAllLines(file);
+        List<string> matchedLines = new List<string>();
+
+        for (int i = 0; i < lines.Length; i++)
         {
-          if (!File.Exists(path)) continue;
+          bool isMatch = regex.IsMatch(lines[i]);
+          if (invertMatch) isMatch = !isMatch;
 
-          var lines = File.ReadAllLines(path);
-          int matchCount = 0;
-
-          for (int i = 0; i < lines.Length; i++)
+          if (isMatch)
           {
-            bool isMatch = regex.IsMatch(lines[i]);
-            if (invertMatch) isMatch = !isMatch;
+            totalMatches++;
+            matchedLines.Add(lines[i]);
 
-            if (isMatch)
+            if (onlyMatchedParts)
             {
-              matchCount++;
-              totalMatches++;
-
-              if (countOnly) continue;
-
-              if (listFilenames) break;
-
-              if (onlyMatchedParts)
+              foreach (Match match in regex.Matches(lines[i]))
               {
-                foreach (Match m in regex.Matches(lines[i]))
-                  Console.WriteLine(m.Value);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(match.Value);
+                Console.ResetColor();
               }
-              else if (contextLines > 0 || beforeLines > 0 || afterLines > 0)
+            }
+            else
+            {
+              string prefix = "";
+              if (!suppressFilenames && filesToSearch.Count() > 1)
               {
-                int before = Math.Max(beforeLines, contextLines);
-                int after = Math.Max(afterLines, contextLines);
-                for (int j = i - before; j <= i + after; j++)
-                {
-                  if (j >= 0 && j < lines.Length)
-                  {
-                    string linePrefix = showLineNumbers ? $"{j + 1}:" : "";
-                    Console.WriteLine($"{linePrefix}{lines[j]}");
-                  }
-                }
+                prefix += $"{file}:";
+              }
+              if (showLineNumbers)
+              {
+                prefix += $"{i + 1}:";
+              }
+
+              Console.Write(prefix);
+              int lastPos = 0;
+              foreach (Match m in regex.Matches(lines[i]))
+              {
+                Console.Write(lines[i].Substring(lastPos, m.Index - lastPos));
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(m.Value);
+                Console.ResetColor();
+                lastPos = m.Index + m.Length;
+              }
+              if (lastPos < lines[i].Length)
+              {
+                Console.WriteLine(lines[i].Substring(lastPos));
               }
               else
               {
-                string linePrefix = showLineNumbers ? $"{i + 1}:" : "";
-                Console.WriteLine($"{linePrefix}{lines[i]}");
+                Console.WriteLine();
               }
             }
           }
+        }
 
-          if (countOnly)
-          {
-            Console.WriteLine($"{path}: {matchCount}");
-          }
-          else if (listFilenames && matchCount > 0)
-          {
-            Console.WriteLine(path);
-          }
+        if (countOnly && matchedLines.Count > 0)
+        {
+          Console.ForegroundColor = ConsoleColor.Cyan;
+          Console.WriteLine($"{file}: {matchedLines.Count} match(es)");
+          Console.ResetColor();
+        }
+        else if (listFilenames && matchedLines.Count > 0)
+        {
+          Console.ForegroundColor = ConsoleColor.Green;
+          Console.WriteLine(file);
+          Console.ResetColor();
         }
       }
 
-      if (countOnly && files.Count > 1)
+      if (countOnly && totalMatches > 0)
       {
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine($"Total matches: {totalMatches}");
+        Console.ResetColor();
       }
     }
   }

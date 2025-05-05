@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v9.0": {
-      "DarkSigil/1.0.0": {
+      "DarkSigil/1.2.0": {
         "runtime": {
           "DarkSigil.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "DarkSigil/1.0.0": {
+    "DarkSigil/1.2.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

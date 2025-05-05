@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace DarkSigil
 {
@@ -8,9 +9,13 @@ namespace DarkSigil
     /// <summary>
     /// APP VERSIONING LOGIC
     /// </summary>
-    
-  private static Config config = Config.LoadConfig("config/config.json");
-    public static string CurrentVersion => config.Version;
+
+    private static Config config = Config.LoadConfig("config/config.json");
+    public static string CurrentVersion => Assembly
+       .GetExecutingAssembly()
+       .GetName()
+       .Version?
+       .ToString() ?? "unknown";
 
     public static string GetFormattedVersion()
     {
@@ -19,25 +24,13 @@ namespace DarkSigil
 
     public static bool IsNewerThan(string versionToCompare)
     {
-      var currentVersionParts = CurrentVersion.Split('.');
-      var compareVersionParts = versionToCompare.Split('.');
-
-      for (int i = 0; i < currentVersionParts.Length; i++)
+      if (Version.TryParse(CurrentVersion, out var current)
+          && Version.TryParse(versionToCompare, out var other))
       {
-        int currentPart = int.Parse(currentVersionParts[i]);
-        int comparePart = int.Parse(compareVersionParts[i]);
-
-        if (currentPart > comparePart)
-        {
-          return true;
-        }
-        if (currentPart < comparePart)
-        {
-          return false;
-        }
+        return current > other;
       }
-      return false; // If all parts are equal, return false
 
+      return false;
     }
   }
 }
