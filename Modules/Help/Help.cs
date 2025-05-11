@@ -39,8 +39,9 @@ namespace DarkSigil.Modules.Help
                 {"mkdir", "Creates a directory"},
                 {"mv", "Moves a file or a directory"},
                  {"cp", "Copies a file or a directory"},
-                // {"touch", "Creates an empty file"},
-                // {"echo", "Displays a message"}
+                 {"touch", "Creates an empty file"},
+                 {"echo", "Displays a message"},
+
             };
 
       var sortedCommands = commands.OrderBy(c => c.Key).ToDictionary(c => c.Key, c => c.Value);

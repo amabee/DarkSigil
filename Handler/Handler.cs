@@ -3,6 +3,7 @@ using DarkSigil.Modules;
 using DarkSigil.Modules.Cal;
 using DarkSigil.Modules.Cat;
 using DarkSigil.Modules.ChangeDirectory;
+using DarkSigil.Modules.Echo;
 using DarkSigil.Modules.Grep;
 using DarkSigil.Modules.Help;
 using DarkSigil.Modules.IfConfig;
@@ -13,6 +14,7 @@ using DarkSigil.Modules.ping;
 using DarkSigil.Modules.Pwd;
 using DarkSigil.Modules.rm;
 using DarkSigil.Modules.RmDir;
+using DarkSigil.Modules.Touch;
 using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
 using DarkSigil.Utils;
@@ -53,6 +55,9 @@ namespace DarkSigil.Handler
                 {"rmdir", new RmDir()},
                 {"mv" , new Mv()},
                 {"cp", new Cp()},
+                {"touch", new Touch()},
+                {"echo" , new Echo()},
+                
             };
     }
 
