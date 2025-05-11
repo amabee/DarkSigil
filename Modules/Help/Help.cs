@@ -38,7 +38,7 @@ namespace DarkSigil.Modules.Help
                 {"rmdir", "Removes a directory"},
                 {"mkdir", "Creates a directory"},
                 {"mv", "Moves a file or a directory"},
-                // {"cp", "Copies a file or a directory"},
+                 {"cp", "Copies a file or a directory"},
                 // {"touch", "Creates an empty file"},
                 // {"echo", "Displays a message"}
             };

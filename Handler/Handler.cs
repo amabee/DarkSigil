@@ -52,6 +52,7 @@ namespace DarkSigil.Handler
                 {"grep", new Grep()},
                 {"rmdir", new RmDir()},
                 {"mv" , new Mv()},
+                {"cp", new Cp()},
             };
     }
 
