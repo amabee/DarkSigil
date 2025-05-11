@@ -41,6 +41,8 @@ namespace DarkSigil.Modules.Help
                  {"cp", "Copies a file or a directory"},
                  {"touch", "Creates an empty file"},
                  {"echo", "Displays a message"},
+                 {"wget", "Downloads a file from the internet"},
+            // Add more commands and their descriptions here
 
             };
 

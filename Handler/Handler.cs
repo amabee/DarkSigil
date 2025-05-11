@@ -15,6 +15,7 @@ using DarkSigil.Modules.Pwd;
 using DarkSigil.Modules.rm;
 using DarkSigil.Modules.RmDir;
 using DarkSigil.Modules.Touch;
+using DarkSigil.Modules.Wget;
 using DarkSigil.Modules.WhoAmI;
 using DarkSigil.Modules.WhoIs;
 using DarkSigil.Utils;
@@ -57,7 +58,7 @@ namespace DarkSigil.Handler
                 {"cp", new Cp()},
                 {"touch", new Touch()},
                 {"echo" , new Echo()},
-                
+                {"wget", new Wget()},
             };
     }
 
